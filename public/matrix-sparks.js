@@ -22,8 +22,8 @@ function createSpark(position, velocity) {
         vel = velocity;
     } else {
         const side = int(random(0, 4));
-        const randomHeight = int(random(0, height / GRID_SIZE)) * GRID_SIZE;
-        const randomWidth = int(random(0, width / GRID_SIZE)) * GRID_SIZE;
+        const randomHeight = int(random(1, height / GRID_SIZE)) * GRID_SIZE;
+        const randomWidth = int(random(1, width / GRID_SIZE)) * GRID_SIZE;
         switch (side) {
             case 0:
                 pos = createVector(0, randomHeight);
@@ -159,9 +159,9 @@ function draw() {
                 deadSparks.push(spark);
             }
             if (
-                spark.pos.x < 0 ||
+                spark.pos.x <= 0 ||
                 spark.pos.x > width ||
-                spark.pos.y < 0 ||
+                spark.pos.y <= 0 ||
                 spark.pos.y > height
             ) {
                 killSpark(spark);

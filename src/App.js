@@ -1,8 +1,10 @@
 import './App.css';
 
 function App() {
+  console.log("ayo " + (new Date()).getMinutes() + ":" + (new Date()).getSeconds());
   return (
     <div className="App">
+      <script src="matrix-sparks.js"></script>
       <header className="App-header">
         <main className="Title-box">
           <h1 className="Main-title">Nathanael Page</h1>

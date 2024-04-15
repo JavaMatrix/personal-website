@@ -135,16 +135,15 @@ function setup() {
     }
 }
 
-let timer60 = 0;
 let panicTimer = 0;
 
 function draw() {
+    console.log("BEGIN");
     colorMode(RGB, 255);
     noStroke();
     background("#121212");
 
-    simTime += deltaTime;
-
+    console.log("SIM");
     for (let sim = 0; sim < SIM_SPEED; sim++) {
         let deadSparks = [];
         for (let x = 0; x < sparks.length; x++) {
@@ -166,22 +165,6 @@ function draw() {
             ) {
                 killSpark(spark);
             }
-
-            // if (simTime > 1000) {
-            //     let collisions = sparks.filter(
-            //         (z) =>
-            //             z.pos.x == spark.pos.x &&
-            //             z.pos.y == spark.pos.y &&
-            //             z.id != spark.id &&
-            //             z.life > 0
-            //     );
-            //     if (collisions.length > 0) {
-            //         killSpark(spark);
-            //         for (const collider of collisions) {
-            //             killSpark(collider);
-            //         }
-            //     }
-            // }
 
             if (isSparkAlive(spark)) {
                 displaySpark(spark);
@@ -216,35 +199,31 @@ function draw() {
         }
     }
 
+    console.log("FRAME STUFF");
     let fps = frameRate();
     fill(255);
     // text(int(fps), 50, 50);
     // text(int(MINIMUM_POP), 50, 150);
 
-    if (fps < 40) {
+    if (deltaTime > 1000) { // it's been over a second, changed tabs or something
+        panic();
+    }
+
+    if (fps < 20 && deltaTime < 1000) {
         panicTimer += deltaTime;
         if (panicTimer > 500) {
-            MINIMUM_POP *= 0.8;
-            while (sparks.length > MINIMUM_POP) {
-                sparks.forEach((spark) => spark.life -= 1);
-                sparks = sparks.filter((spark) => isSparkAlive(spark));
-            }
-            console.log("PANIC");
+            panic();
         }
     } else {
         panicTimer = 0;
     }
 
-    if (fps > 59) {
-        timer60 += deltaTime;
-    } else {
-        timer60 = 0;
-    }
+    console.log("DONE");
+}
 
-    if (timer60 > 1000) {
-        MINIMUM_POP *= 1.05;
-        timer60 = 0;
-    }
+function panic() {
+    MINIMUM_POP *= 0.8;
+    sparks = [];
 }
 
 function windowResized() {

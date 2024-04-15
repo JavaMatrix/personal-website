@@ -209,7 +209,7 @@ function draw() {
         panic();
     }
 
-    if (fps < 20 && deltaTime < 1000) {
+    if (fps < 40) {
         panicTimer += deltaTime;
         if (panicTimer > 500) {
             panic();

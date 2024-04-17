@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  z-index: -99;
 }
 
 .App-logo {
@@ -44,10 +45,27 @@
   cursor: pointer;
   text-decoration: none;
   color: #bdbdc2;
+  fill: #bdbdc2;
+  padding: 0px 10px;
+  margin: 0;
 }
 
-.nav-header:hover {
+.nav-header:hover,
+.nav-header-virt-hover {
   color: #f0f2a6;
+  fill: #f0f2a6;
+  background-color: #181818;
+  border: 1px solid #9999A1;
+  border-radius: 1vmin 1vmin 0 0;
+  padding: 0px 9px;
+  border-bottom-color: #181818;
+  z-index: 0;
+}
+
+.fake-nav-header:hover {
+  background-color: transparent;
+  border: transparent;
+  padding: 0px 10px;
 }
 
 .sections {
@@ -55,7 +73,7 @@
 }
 
 .fa-icon {
-  width: 2em;
-  height: 2em;
-  vertical-align: -0.125em;
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: -0.05em;
 }

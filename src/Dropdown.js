@@ -2,16 +2,37 @@ import './Dropdown.css'
 import React from 'react'
 
 function Dropdown(props) {
-    const [isOpen, setOpen] = React.useState(false);
-    console.log(isOpen)
+    const [isOverLink, setOverLink] = React.useState(false);
+    const [isOverMenu, setOverMenu] = React.useState(false);
+
+    function handleHoverLink() {
+        console.log('hover')
+        setOverLink(true);
+    }
+
+    function handleUnhoverLink() {
+        setOverLink(false);
+    }
+
+    function handleHoverMenu() {
+        console.log('hovermenu')
+        setOverMenu(true);
+    }
+
+    function handleUnhoverMenu() {
+        setOverMenu(false);
+    }
+
+    const aClassName = (isOverLink || isOverMenu) ? "nav-header nav-header-virt-hover" : "nav-header";
+
     return (
-        <span class="dropdown">
-            <a href="." className="nav-header">{props.header + ""}</a>
+        <div className="dropdown" onMouseEnter={handleHoverLink} onMouseLeave={handleUnhoverLink}>
+            <a href={props.link ?? "."} className={aClassName}>{props.header + ""}</a>
             {
-                isOpen ?
-                    <div></div> :
+                isOverLink || isOverMenu ?
+                    <div className="dropdown-menu" onMouseEnter={() => handleHoverMenu()} onMouseLeave={() => handleUnhoverMenu()}><a href="http://example.com/">wow</a></div> :
                     ""}
-        </span>
+        </div>
     );
 }
 

@@ -62,7 +62,7 @@ function createSpark(position, velocity) {
         life,
         death: 0,
         history,
-        sHue: random([308, 180, 240]),
+        sHue: random([291, 180, 240]),
         canSplit: true,
     };
 }
@@ -170,6 +170,24 @@ function draw() {
                 killSpark(spark);
             }
 
+            let collisions = sparks.filter(
+                (z) =>
+                    z.life > 0 &&
+                    z.pos.x == spark.pos.x &&
+                    z.pos.y == spark.pos.y &&
+                    z.id != spark.id
+            );
+            if (collisions.length > 0) {
+                killSpark(spark);
+                for (const collider of collisions) {
+                    killSpark(collider);
+                }
+            }
+
+
+            if (isSparkAlive(spark)) {
+                displaySpark(spark);
+            }
             if (isSparkAlive(spark)) {
                 displaySpark(spark);
             }

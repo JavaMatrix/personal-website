@@ -1,4 +1,5 @@
 import './App.css';
+import Dropdown from './Dropdown';
 
 function App() {
   console.log("ayo " + (new Date()).getMinutes() + ":" + (new Date()).getSeconds());
@@ -8,7 +9,12 @@ function App() {
       <header className="App-header">
         <main className="Title-box">
           <h1 className="Main-title">Nathanael Page</h1>
-          <h2 className="dummy-sections">Software &#11825; Music &#11825; Christianity &#11825; Games</h2>
+          <nav className="sections">
+            <Dropdown header="Software" /><span> ⸱ </span>
+            <Dropdown header="Music" /><span> ⸱ </span>
+            <Dropdown header="Christianity" /><span> ⸱ </span>
+            <a class="nav-header" href="https://nates.games/">Games</a>
+          </nav>
         </main>
       </header>
     </div>

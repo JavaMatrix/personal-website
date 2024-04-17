@@ -132,7 +132,7 @@ let sparks = [];
 function setup() {
     createCanvas(windowWidth, windowHeight);
     // frameRate(1);
-    MINIMUM_POP = mobileCheck() ? 25 : ((windowWidth * 2 + windowHeight * 2) / 50) * 5;
+    MINIMUM_POP = mobileCheck() ? 25 : 600;
     MAX_DISTANCE = createVector(width / 2, height / 2).mag();
     frameRate(120);
     background(0, 255);
@@ -146,9 +146,8 @@ let panicTimer = 0;
 function draw() {
     colorMode(RGB, 255);
     noStroke();
-    background("#121212");
+    background("#181818");
 
-    console.log("SIM");
     for (let sim = 0; sim < SIM_SPEED; sim++) {
         let deadSparks = [];
         for (let x = 0; x < sparks.length; x++) {
@@ -224,7 +223,7 @@ function draw() {
 }
 
 function panic() {
-    MINIMUM_POP *= 0.8;
+    // MINIMUM_POP *= 0.8;
     sparks = [];
 }
 

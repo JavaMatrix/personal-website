@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-console.log(window.location.hostname);
-if (window.location.hostname != "nathanael.orren.page" && window.location.hostname != "localhost") {
+// eslint-disable-next-line
+if (window.location.hostname != "nathanael.orren.page" && window.location.hostname != "localhost" && !window.location.hostname.includes("192.168")) {
   window.location.host = "nathanael.orren.page";
 }
 

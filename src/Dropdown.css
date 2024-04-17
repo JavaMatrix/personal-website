@@ -1,20 +1,25 @@
 .dropdown {
     position: relative;
-    margin: 5px 0;
+    margin: 5px;
     display: inline;
 }
 
 .dropdown-menu {
-    display: block;
+    display: flex;
     position: absolute;
     left: 0;
     list-style-type: none;
     margin: 0px 0;
-    border: 1px solid #9999A1;
+    border: 1px solid #f0f2a6;
     border-top-width: 0px;
     border-radius: 0 1vmin 1vmin 1vmin;
     background-color: #181818;
-    width: 300px;
+    width: max-content;
+    width: -moz-max-content;
+    min-width: calc(100% + 1vmin);
+    overflow-x: visible;
+    align-items: start;
+    flex-direction: column;
 }
 
 .dropdown-menu::after {
@@ -25,7 +30,7 @@
     width: 100%;
     left: 0;
     margin: -1px 0;
-    border-top: 1px solid #9999A1;
+    border-top: 1px solid #f0f2a6;
     border-radius: 0 1vmin 1vmin 1vmin;
     z-index: -1;
 }

@@ -170,20 +170,21 @@ function draw() {
                 killSpark(spark);
             }
 
-            let collisions = sparks.filter(
-                (z) =>
-                    z.life > 0 &&
-                    z.pos.x == spark.pos.x &&
-                    z.pos.y == spark.pos.y &&
-                    z.id != spark.id
-            );
-            if (collisions.length > 0) {
-                killSpark(spark);
-                for (const collider of collisions) {
-                    killSpark(collider);
+            if (!mobileCheck()) {
+                let collisions = sparks.filter(
+                    (z) =>
+                        z.life > 0 &&
+                        z.pos.x == spark.pos.x &&
+                        z.pos.y == spark.pos.y &&
+                        z.id != spark.id
+                );
+                if (collisions.length > 0) {
+                    killSpark(spark);
+                    for (const collider of collisions) {
+                        killSpark(collider);
+                    }
                 }
             }
-
 
             if (isSparkAlive(spark)) {
                 displaySpark(spark);

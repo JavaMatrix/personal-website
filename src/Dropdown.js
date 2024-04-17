@@ -6,7 +6,6 @@ function Dropdown(props) {
     const [isOverMenu, setOverMenu] = React.useState(false);
 
     function handleHoverLink() {
-        console.log('hover')
         setOverLink(true);
     }
 
@@ -15,7 +14,6 @@ function Dropdown(props) {
     }
 
     function handleHoverMenu() {
-        console.log('hovermenu')
         setOverMenu(true);
     }
 
@@ -26,13 +24,16 @@ function Dropdown(props) {
     const aClassName = (isOverLink || isOverMenu) ? "nav-header nav-header-virt-hover" : "nav-header";
 
     return (
-        <div className="dropdown" onMouseEnter={handleHoverLink} onMouseLeave={handleUnhoverLink}>
-            <a href={props.link ?? "."} className={aClassName}>{props.header + ""}</a>
+        <div className="dropdown" onMouseEnter={handleHoverLink} onMouseLeave={handleUnhoverLink} onTouchStart={handleHoverLink} aria-haspopup="true">
+            <p className={aClassName} aria-haspopup="true">{props.header + ""}</p>
             {
                 isOverLink || isOverMenu ?
-                    <div className="dropdown-menu" onMouseEnter={() => handleHoverMenu()} onMouseLeave={() => handleUnhoverMenu()}><a href="http://example.com/">wow</a></div> :
-                    ""}
-        </div>
+                    <div className="dropdown-menu" onMouseEnter={() => handleHoverMenu()} onMouseLeave={() => handleUnhoverMenu()}>
+                        {props.children}
+                    </div> :
+                    ""
+            }
+        </div >
     );
 }
 

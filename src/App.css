@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  z-index: -99;
 }
 
 .App-logo {
@@ -38,6 +37,7 @@
 }
 
 .nav-header {
+  display: inline;
   font-family: 'Oswald', sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
@@ -55,7 +55,7 @@
   color: #f0f2a6;
   fill: #f0f2a6;
   background-color: #181818;
-  border: 1px solid #9999A1;
+  border: 1px solid #f0f2a6;
   border-radius: 1vmin 1vmin 0 0;
   padding: 0px 9px;
   border-bottom-color: #181818;
@@ -72,8 +72,21 @@
   font-size: 1.5em;
 }
 
-.fa-icon {
-  width: 0.8em;
-  height: 0.8em;
-  vertical-align: -0.05em;
+.nav-menu-item {
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.7em;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  cursor: pointer;
+  text-decoration: none;
+  color: #bdbdc2;
+  fill: #bdbdc2;
+  margin: 5px 10px;
+}
+
+.nav-menu-item:hover {
+  color: #ee8fff;
+  fill: #ee8fff;
 }

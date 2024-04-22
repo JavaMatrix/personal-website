@@ -1,6 +1,6 @@
 import './App.css';
-import Dropdown from './Dropdown';
-import ExternalLink from './ExternalLink';
+import Dropdown from './components/Dropdown';
+import ExternalLink from './components/ExternalLink';
 
 function App() {
   return (

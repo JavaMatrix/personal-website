@@ -59,6 +59,8 @@
   border-radius: 1vmin 1vmin 0 0;
   padding: 0px 9px;
   border-bottom-color: #181818;
+  /* for safari */
+  border-top-color: #f0f2a6;
   z-index: 0;
 }
 
